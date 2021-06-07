@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace School_1
 {
+    [Authorize]
     public class Schooltable1Controller : Controller
     {
         private readonly School_dataContext _context;
@@ -22,6 +24,10 @@ namespace School_1
         {
             return View(await _context.Schooltable1s.ToListAsync());
         }
+        //public async Task<IActionResult> Index1()
+        //{
+        //    return Json(await _context.Schooltable1s.ToListAsync());
+        //}
         public async Task<IActionResult> Class1()
         {
             return View(await _context.Schooltable1s.Where(x=>x.Class==1).ToListAsync());
